@@ -7,41 +7,39 @@ class Login extends Controller
     }
 
     public function index()
+    
     {
+        if(isset($_COOKIE['username']))
+            setView("/");
         include ROOT . '/App/View/Login/index.php';
     }
     function dologin()
     {
         $username = isset($_POST['username']) ? $_POST['username'] : '';
         $password = isset($_POST['password']) ? $_POST['password'] : '';
-        $model = $this->getModel('Data');
-        $acc = $model->getAcc('account', $username);
+        //lấy data từ model
+        $model = $this->getModel('Account');
+        $acc = $model->getAcc( $username);
 
-
+        // xử lý data
+        //username invalid
         if (empty($acc)) {
-            $this->setView('Login/index', ['error' => 'Tài khoản không đúng']);
+            !isset($_SESSION['returnError']) && $_SESSION['returnError'] = 'Tài khoản không đúng';
+            setView('/login');
         } else {
+
+            //account invalid
             $x = password_verify($password, $acc[0]['password']);
             if ($acc[0]['password'] == $x) {
-                
+
                 //tao cookie
-                setcookie('username', $acc[0]['username'], time() + (86400 * 30), "/");
+                setcookie('id_user', $acc[0]['id_user'], time() + (86400 * 30), "/");
                 
-                //xử lý account không phải là patient
-                if ($acc[0]['role'] == 'PHARMACIST')
-                    $this->setView('/pharmacist');
-                else
-                    $this->setView('/');
-            } else
-                $this->setView('Login/index', ['error' => 'Sai mật khẩu không đúng']);
+                setView("/");
+            } else { //password invalid
+                !isset($_SESSION['returnError']) && $_SESSION['returnError'] = 'Mật khẩu sai kìa thằng lone';
+                setView('/login');
+            }
         }
-    }
-    public function setView($view, $data = [])
-    {
-        extract($data);
-        if (!empty($data))
-            include ROOT . '/App/View/' . $view . '.php';
-        else
-            header('Location: ' . $view);
     }
 }

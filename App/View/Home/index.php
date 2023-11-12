@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,19 +9,19 @@
 </head>
 
 <body>
-    <? if (!isset($_COOKIE['username'])) : ?>
+    <? if (!isset($_COOKIE['id_user'])) : ?>
         <h1>Hello world </h1>
         <a href="/login">Login</a>
         <a href="/register">Register</a>
 
     <? else : ?>
-        <h1>Hello <? echo $_COOKIE['username']; ?></h1>
-        <a href='/home/logout'>Logout</a>
+        <h1>Hello <?echo $_SESSION['name_user']; ?></h1>
+        <a href='/home/logout'>Logout</a> 
         <a href='/home/profile'>Profile</a>
        
 
     <? endif ?>
-    <a href='/chuyen_khoa'>Chuyên khoa</a>
+
 
 </body>
 

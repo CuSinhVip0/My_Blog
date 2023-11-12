@@ -1,38 +1,36 @@
-<? 
+<?
 
-class Register extends Controller{
-    public function __construct(){
-
+class Register extends Controller
+{
+    public function __construct()
+    {
     }
-    public function index (){
+    public function index()
+    {
+        if (isset($_COOKIE['username']))
+            setView("/");
         include ROOT . '/App/View/Register/index.php';
     }
-    public function doregister(){
-        $username =$_POST['username'];
-        $password =$_POST['password'];
-        $model = $this->getModel('Data');
-        $account = $model->getAcc('account', $username);
-        if(!empty($account))
-            $this->setView('Register/index', ['error'=>'Tài khoản đã tồn tại rồi thằng lone']);
-        else{
-            $password = password_hash($password,PASSWORD_DEFAULT);
-            
+    public function doregister()
+    {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $model = $this->getModel('Account');
+        $account = $model->getAcc($username);
+        if (!empty($account)) {
+            !isset($_SESSION['returnError']) && $_SESSION['returnError'] =  "Tài khoản đã tồn tại rồi thằng lon";
+            setView('/register');
+        } else {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $id_user =uniqid();
             //tạo account
-            $model->addAccount('account',$username,$password);
+            $model->addAccount('account', $id_user, $username, $password);
 
             //tạo profile trống;
             $profile = $this->getModel('User');
-            $profile->insert(uniqid(),null,null,null, $username);
-            
-            $this->setView('/login');
-        }
-    }
+            $profile->insert($id_user,null,null,null);
 
-    public function setView($view ,$data=[]){
-        extract($data);
-        if(!empty($data))
-            include ROOT . '/App/View/'.$view.'.php';
-        else
-            header("Location: ".$view);
+            setView('/login');
+        }
     }
 }

@@ -27,75 +27,45 @@ class App
         $urlArr = array_filter($urlArr);
 
         $urlArr = array_values($urlArr);
-      
 
-        if ((!empty($urlArr)) and ucfirst($urlArr[0]) == 'Pharmacist') {
-            unset($urlArr[0]);
+        // xử lý params đầu tiên là controller
 
-            if (file_exists('App/Controller/Pharmacist/' . ($this->__controller) . '.php')) {
-                include('Controller//Pharmacist/' . ($this->__controller) . '.php');
-                $this->__controller = new $this->__controller();
+        //nếu chưa có params thì về trang home
+        if (!empty($urlArr[0])) {
+            $this->__controller = ucfirst($urlArr[0]);
+        } else
+            $this->__controller = ucfirst($this->__controller);
 
-                if (!empty($urlArr[1])) {
+        if (file_exists('App/Controller/' . ($this->__controller) . '.php')) {
+            include('Controller/' . ($this->__controller) . '.php');
+            $this->__controller = new $this->__controller();
+
+
+            //xử lý params thứ 2 là action hay là file tĩnh
+            if (!empty($urlArr[1])) {
+                if (strpos($urlArr[1], '.html') or strpos($urlArr[1], '.php')) {
+
+                    $this->params = [$urlArr[1]];
+                } else {
+
                     $this->__action = $urlArr[1];
                 }
+            }
+            //xử lý các params còn lại là query string
+            if (!empty($urlArr[2])) {
+                unset($urlArr[1]);
+                unset($urlArr[0]);
 
-                if (!empty($urlArr[2])) {
-                    unset($urlArr[1]);
-                    unset($urlArr[0]);
+                $urlArr = array_values($urlArr);
+                $this->params = $urlArr;
+            }
 
-                    $urlArr = array_values($urlArr);
-                    $this->params = $urlArr;
-                }
-
-
-
-                if (method_exists($this->__controller, $this->__action))
-                    call_user_func_array([$this->__controller, $this->__action], $this->params);
-                else
-                    $this->loadError();
-            } else
+            if (method_exists($this->__controller, $this->__action))
+                call_user_func_array([$this->__controller, $this->__action], $this->params);
+            else
                 $this->loadError();
-        } else {
-
-            // xử lý params đầu tiên là controller 
-            if (!empty($urlArr[0])) {
-                $this->__controller = ucfirst($urlArr[0]);
-            } else
-                $this->__controller = ucfirst($this->__controller);
-
-            if (file_exists('App/Controller/' . ($this->__controller) . '.php')) {
-                include('Controller/' . ($this->__controller) . '.php');
-                $this->__controller = new $this->__controller();
-                
-
-                //xử lý params thứ 2 là action hay là file tĩnh
-                if (!empty($urlArr[1])) {
-                    if(strpos($urlArr[1],'.html') or strpos($urlArr[1],'.php')){
-                        
-                        $this->params = [$urlArr[1]];
-                    }
-                    else{
-                        
-                        $this->__action = $urlArr[1];
-                    }
-                }
-                //xử lý các params còn lại là biến
-                if (!empty($urlArr[2])) {
-                    unset($urlArr[1]);
-                    unset($urlArr[0]);
-
-                    $urlArr = array_values($urlArr);
-                    $this->params = $urlArr;
-                }
-
-                if (method_exists($this->__controller, $this->__action))
-                    call_user_func_array([$this->__controller, $this->__action], $this->params);
-                else
-                    $this->loadError();
-            } else
-                $this->loadError();
-        }
+        } else
+            $this->loadError();
     }
 
     function loadError()

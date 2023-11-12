@@ -4,30 +4,29 @@ class Home extends Controller
     public $model;
     function __construct()
     {
+        $this->model = $this->getModel('User');
     }
     function index()
     {
+
+        if (isset($_COOKIE['id_user'])) {
+            $inforUser = $this->model->getDataUser($_COOKIE['id_user']);
+            //lấy name của user hiện tại để show
+            if (!empty($inforUser)) {
+                $_SESSION['name_user'] = $inforUser[0]['name'];
+            }
+        }
         include ROOT . '/App/View/Home/index.php';
     }
     function logout()
     {
-        unset($_SESSION['id']);
-        setcookie('username', '', time() - 3600, '/');
+        unset($_SESSION['name_user']);
+        setcookie('id_user', '', time() - 3600, '/');
         header("Location: /");
-    }
-
-    public function chuyenkhoa()
-    {
-        include ROOT . '/App/View/Home/chuyenkhoa.php';
     }
     public function profile()
     {
-        $this->model = $this->getModel('User');
-        $inforUser = $this->model->getDataUser($_COOKIE['username']);
-        //lấy id của user hiện tại để editprofile
-        if (!empty($inforUser)) {
-            $_SESSION['id'] = $inforUser[0]['id'];
-        }
+        $inforUser = $this->model->getDataUser($_COOKIE['id_user']);
         include ROOT . '/App/View/Home/profile.php';
         exit;
     }
@@ -36,8 +35,8 @@ class Home extends Controller
         $name =  $_POST['name'];
         $birth =  $_POST['birth'];
         $sex =  $_POST['sex'];
-        $this->model = $this->getModel('User');
-        $this->model->update($_SESSION['id'], $name, $birth, $sex);
+
+        $this->model->update($_COOKIE['id_user'], $name, $birth, $sex);
         header("Location: /home/profile");
     }
 }

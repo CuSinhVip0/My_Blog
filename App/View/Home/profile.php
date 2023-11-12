@@ -18,6 +18,8 @@
         <p>Birth: <? echo isset($inforUser[0]['birth'])?  $inforUser[0]['birth']:""?></p>
         <p>Sex:  <? echo isset($inforUser[0]['sex'])?  $inforUser[0]['sex']:""?></p>
     </div>
+    
+
     <button onclick="handleToggle()">Edit profile</button>
     <form method="post" action="/home/editprofile" class="form active">
         <label for="name">Name:</label>
@@ -30,8 +32,9 @@
             <option value="Nu">Nu</option>
         </select></br>
         <button type="submit">Save</button>
-        
     </form>
+    <a href="/home">Home</a>
+
 
     <script type="text/javascript">
         function handleToggle(){

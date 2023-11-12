@@ -48,3 +48,13 @@ function chuanHoaChuoi($str)
     $temp = strtolower(vn_to_str($str));
     return str_replace(" ", "_", $temp);
 }
+
+function setView($view ,$data=[]){
+    extract($data);
+    if(!empty($data)){
+        
+        include ROOT . '/App/View/'.$view.'.php';
+    }
+    else
+        header("Location: ".$view);
+}
