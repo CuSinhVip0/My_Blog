@@ -58,3 +58,8 @@ function setView($view ,$data=[]){
     else
         header("Location: ".$view);
 }
+
+function formatTme($time){
+    
+    return date('d/m/Y', $time);
+}

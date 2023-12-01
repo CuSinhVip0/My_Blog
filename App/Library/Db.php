@@ -19,7 +19,6 @@ class Db
 	{
 		$stm = $this->connect->prepare($sql);
 		$stm->execute($arr);
-
 		return $stm->rowCount();
 	}
 }

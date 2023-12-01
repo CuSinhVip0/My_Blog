@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <style>
-       .active{
-        display: none;
-       }
+        .active {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
     <h1>Page Profile</h1>
-    
+
     <div class="infor">
-        <p>Name: <? echo isset($inforUser[0]['name'])?  $inforUser[0]['name']:""?></p>
-        <p>Birth: <? echo isset($inforUser[0]['birth'])?  $inforUser[0]['birth']:""?></p>
-        <p>Sex:  <? echo isset($inforUser[0]['sex'])?  $inforUser[0]['sex']:""?></p>
+        <p>Name: <? echo isset($inforUser[0]['name']) ?  $inforUser[0]['name'] : "" ?></p>
+        <p>Birth: <? echo isset($inforUser[0]['birth']) ?  $inforUser[0]['birth'] : "" ?></p>
+        <p>Sex: <? echo isset($inforUser[0]['sex']) ?  $inforUser[0]['sex'] : "" ?></p>
     </div>
-    
+
 
     <button onclick="handleToggle()">Edit profile</button>
     <form method="post" action="/home/editprofile" class="form active">
@@ -37,10 +39,11 @@
 
 
     <script type="text/javascript">
-        function handleToggle(){
+        function handleToggle() {
             const form = document.querySelector('form');
             form.classList.toggle('active');
         }
     </script>
 </body>
+
 </html>

@@ -10,8 +10,8 @@ body {
     box-sizing: border-box;
 }
 
-.unvalid{
-    border-color:red !important;
+.unvalid {
+    border-color: red !important;
 }
 
 .wrapper {
@@ -29,23 +29,25 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 12px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.description{
+.description {
     padding: 20px;
 }
 
-.form-register,.form-login {
+.form-register,
+.form-login {
     padding: 20px 32px;
-    margin: 20px 32px; 
+    margin: 20px 32px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
 
-.form-notification{
+.form-notification {
     text-align: left;
     font-size: 14px;
     height: 14px;
@@ -76,15 +78,16 @@ body {
     font-size: 14px;
 }
 
-.input:focus:not(.input[type=submit]) {
+.input:focus:not(.input[type="submit"]) {
     border-color: #9947fe;
 }
 
-.input[type=submit]{
+.input[type="submit"] {
     cursor: pointer;
 }
 
-.register_submit,.login_submit {
+.register_submit,
+.login_submit {
     background-color: black;
     color: white;
     font-weight: 700;
@@ -112,5 +115,3 @@ body {
 }
 
 /* login */
-
-

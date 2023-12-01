@@ -8,15 +8,10 @@ class Home extends Controller
     }
     function index()
     {
-
-        if (isset($_COOKIE['id_user'])) {
-            $inforUser = $this->model->getDataUser($_COOKIE['id_user']);
-            //lấy name của user hiện tại để show
-            if (!empty($inforUser)) {
-                $_SESSION['name_user'] = $inforUser[0]['name'];
-            }
-        }
+        $model = $this->getModel('Posts');
+        $posts = $model->getAllPostwithUser();
         include ROOT . '/App/View/Home/index.php';
+        exit;
     }
     function logout()
     {
@@ -38,5 +33,20 @@ class Home extends Controller
 
         $this->model->update($_COOKIE['id_user'], $name, $birth, $sex);
         header("Location: /home/profile");
+    }
+
+    public function create_blog()
+    {
+        include ROOT . '/App/View/Home/createBlog.php';
+        exit;
+    }
+
+    public function save_blog()
+    {
+        $title = isset($_POST['title']) ? $_POST['title'] : '';
+        $content = isset($_POST['content']) ? $_POST['content'] : '';
+        $model = $this->getModel('Posts');
+        $model->insertPost(uniqid(), $title, $content, $_COOKIE['id_user']);
+        header("Location: /home/create-blog");
     }
 }

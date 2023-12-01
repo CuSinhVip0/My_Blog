@@ -47,7 +47,7 @@ class App
 
                     $this->params = [$urlArr[1]];
                 } else {
-
+                    $urlArr[1] =str_replace('-', '_', $urlArr[1]);
                     $this->__action = $urlArr[1];
                 }
             }
