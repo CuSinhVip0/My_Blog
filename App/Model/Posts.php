@@ -75,4 +75,9 @@ class Posts extends Db
 
         return $this->selectQuery("update post set luotxem = ?  where id = ?", [$final, $id]);
     }
+
+    function search($q)
+    {
+        return $this->selectQuery("select * from post  join user on post.id_user = user.id_user where trangthai = 1 and title REGEXP ? ", [$q . "?"]);
+    }
 }

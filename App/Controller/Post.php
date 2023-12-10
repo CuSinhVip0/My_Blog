@@ -8,10 +8,6 @@ class Post extends Controller
 
         $model = $this->getModel('Posts');
 
-        //update see
-
-
-
         if (isset($_COOKIE['id_user'])) {
             $model_user = $this->getModel("User");
             $inforUser = $model_user->getDataUser($_COOKIE['id_user']);
