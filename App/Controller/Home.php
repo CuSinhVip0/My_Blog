@@ -1,15 +1,23 @@
 <?
 class Home extends Controller
 {
-    public $model;
+
     function __construct()
     {
-        $this->model = $this->getModel('User');
+        if (isset($_COOKIE['id_user']) && $_COOKIE['id_user'] == 'root') {
+            setView("/admin/dashboard/public");
+            exit;
+        }
     }
     function index()
     {
-        $model = $this->getModel('Posts');
-        $posts = $model->getAllPostwithUser();
+        $model = $this->getModel('User');
+        if (isset($_COOKIE['id_user'])) {
+            $inforUser = $model->getDataUser($_COOKIE['id_user']);
+        }
+        $model_post = $this->getModel('Posts');
+        $posts = $model_post->getAllPostwithUser();
+        $posts_see = $model_post->getAllPostwithTopSee();
         include ROOT . '/App/View/Home/index.php';
         exit;
     }
@@ -21,22 +29,31 @@ class Home extends Controller
     }
     public function profile()
     {
-        $inforUser = $this->model->getDataUser($_COOKIE['id_user']);
+        $model = $this->getModel('User');
+        $inforUser = $model->getDataUser($_COOKIE['id_user']);
         include ROOT . '/App/View/Home/profile.php';
         exit;
     }
     public function editprofile()
     {
-        $name =  $_POST['name'];
+
+        $name = $_POST['name'];
         $birth =  $_POST['birth'];
         $sex =  $_POST['sex'];
 
-        $this->model->update($_COOKIE['id_user'], $name, $birth, $sex);
+        $model = $this->getModel('User');
+        $model->update($_COOKIE['id_user'], $name, $birth, $sex);
         header("Location: /home/profile");
     }
 
     public function create_blog()
     {
+        $model = $this->getModel('User');
+        if (isset($_COOKIE['id_user'])) {
+            $inforUser = $model->getDataUser($_COOKIE['id_user']);
+        }
+
+
         include ROOT . '/App/View/Home/createBlog.php';
         exit;
     }

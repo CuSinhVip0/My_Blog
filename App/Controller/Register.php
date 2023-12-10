@@ -7,7 +7,7 @@ class Register extends Controller
     }
     public function index()
     {
-        if (isset($_COOKIE['username']))
+        if (isset($_COOKIE['id_user']))
             setView("/");
         include ROOT . '/App/View/Register/index.php';
     }
@@ -22,13 +22,13 @@ class Register extends Controller
             setView('/register');
         } else {
             $password = password_hash($password, PASSWORD_DEFAULT);
-            $id_user =uniqid();
+            $id_user = uniqid();
             //tạo account
             $model->addAccount('account', $id_user, $username, $password);
 
             //tạo profile trống;
             $profile = $this->getModel('User');
-            $profile->insert($id_user,null,null,null);
+            $profile->insert($id_user, null, null, null);
 
             setView('/login');
         }

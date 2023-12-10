@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+html {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    color: #1b1b1b;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul {
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+
+/* wrapper2 */
+
+.wrapper_2 {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 3;
+}
+
+/* end wrapper2 */
+
+/* custom */
+
+.show {
+    display: block !important;
+}
+
+.check {
+    background-color: #e7ecf3;
+}
+/* end custom */
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 1140px;
+    background-color: white;
+    padding: 0 20px;
+    position: relative;
+}
+/* nav */
+.nav {
+    height: 100%;
+    position: fixed;
+    left: 0;
+    width: calc(50% - 300px);
+    display: flex;
+    justify-content: end;
+}
+
+.nav_body {
+    width: 290px;
+    background-color: beige;
+}
+
+.nav_admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin_logout {
+    text-decoration: none;
+    color: #1b1b1b;
+    border: none;
+    padding: 12px 24px;
+    color: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgb(204, 204, 155);
+}
+
+.admin_icon {
+    width: 75%;
+}
+
+.nav_title {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.nav_icon {
+    width: 20px;
+    margin-right: 20px;
+}
+
+.nav_items {
+    margin: 0;
+}
+
+.nav_item {
+}
+
+.nav_item a {
+    display: block;
+    padding: 20px 40px 20px 50px;
+    text-decoration: none;
+    color: #1b1b1b;
+}
+
+.nav_item:hover {
+    cursor: pointer;
+    background-color: #e7ecf3;
+}
+
+/* end nav */
+.body {
+    margin-left: calc(50% - 300px);
+    padding: 20px 0 20px 20px;
+}
+
+.body_title {
+    width: 100%;
+    position: relative;
+}
+
+.body_title-name {
+    width: max-content;
+    background-color: white;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.body_title-hr {
+    position: absolute;
+    right: 0;
+    left: 35%;
+    top: 78%;
+    margin: 0;
+}
+
+.right_items {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.right_item2 {
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.right_item {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    gap: 20px;
+}
+
+.right_item_up {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right_item_below {
+    border: 1px solid #eee;
+    padding: 20px;
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.item_left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.item_title {
+    font-style: oblique;
+    font-size: 20px;
+}
+.item_below {
+    display: inline-block;
+    width: 500px;
+}
+
+.item_name {
+    display: flex;
+    align-items: center;
+    float: left;
+    margin-right: 20px;
+    color: #9b9b9b;
+}
+
+.item_see {
+    display: flex;
+    align-items: center;
+    float: left;
+    margin-right: 20px;
+}
+.item_icon {
+    width: 20px;
+}
+
+.item_see .item_icon,
+.item_name .item_icon {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.item_day {
+    color: #9b9b9b;
+}
+
+.item_right {
+    display: flex;
+    align-items: center;
+}
+
+.item_btn {
+    color: #1b1b1b;
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.item_btn:hover {
+    background-color: #e7ecf3;
+}
+
+/* wrapper3 */
+
+.wrapper3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper3_body {
+    padding: 20px;
+}
+.wrapper3_btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 12px;
+    cursor: pointer;
+}
+.wrapper3_btn:hover {
+    background-color: #cccc9b;
+}
+/* end wrapper2 */
