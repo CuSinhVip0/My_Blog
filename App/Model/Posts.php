@@ -47,6 +47,7 @@ class Posts extends Db
     }
 
 
+
     function deletePost($id)
     {
         return $this->selectQuery("delete from post where id = ?", [$id]);

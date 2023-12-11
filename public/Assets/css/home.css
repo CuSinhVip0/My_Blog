@@ -218,3 +218,8 @@ li {
     flex: 2;
     font-size: 14px;
 } */
+
+.item_tym {
+    color: #00d5fc;
+    display: none;
+}

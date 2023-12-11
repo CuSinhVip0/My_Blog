@@ -13,7 +13,7 @@ class u extends Controller
             if (isset($_COOKIE['id_user'])) {
                 $inforUser = $model->getDataUser($_COOKIE['id_user']);
             }
-
+            $model_like = $this->getModel('Likepost');
             $posts = $model_posts->getAllPostForUser($id_user);
             include ROOT . '/App/View/User/profile.php';
             exit;

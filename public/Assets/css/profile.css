@@ -51,14 +51,13 @@ p {
 }
 
 .container {
-    width: 1440px;
+    width: 1140px;
     min-height: calc(100vh - 155px);
     background-color: white;
     padding: 135px 20px 20px;
 
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
 }
 
 .container_author {
@@ -135,7 +134,9 @@ p {
 
 .item_right_below {
     margin-top: 4px;
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .item_status {
@@ -148,7 +149,7 @@ p {
 }
 
 .item_icon {
-    width: 14px;
+    width: 16px;
 }
 
 .item_author {
@@ -157,6 +158,8 @@ p {
 }
 
 .item_day {
+    margin-right: 12px;
+    float: left;
     color: #9b9b9b;
 }
 
@@ -186,4 +189,9 @@ p {
 
 .sub_content_btn:hover {
     background-color: #9b9b9b;
+}
+
+.item_tym {
+    color: #00d5fc;
+    display: none;
 }

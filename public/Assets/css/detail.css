@@ -201,7 +201,15 @@ li {
     padding: 4px 0 8px;
 }
 .left_author_see {
+    display: flex;
+    align-items: center;
     text-align: end;
+    justify-content: flex-end;
+}
+
+.left_author_see .item_author {
+    margin-top: 0;
+    margin-right: 20px;
 }
 
 .left_title {
@@ -219,4 +227,8 @@ li {
 .left_body img {
     max-width: 100%;
     height: auto;
+}
+.item_tym {
+    color: #00d5fc;
+    display: none;
 }

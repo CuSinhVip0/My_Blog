@@ -11,6 +11,7 @@ class Author extends Controller
         if (isset($_COOKIE['id_user']) && $_COOKIE["id_user"] == $id_user) {
             header("Location: /u/profile/" . $_COOKIE['id_user']);
         }
+        $model_like = $this->getModel('Likepost');
         $model = $this->getModel('User');
         $model_posts = $this->getModel('Posts');
         if (isset($_COOKIE['id_user'])) {

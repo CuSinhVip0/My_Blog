@@ -5,8 +5,8 @@ class Post extends Controller
 
     public function detail($id)
     {
-
         $model = $this->getModel('Posts');
+        $model_like = $this->getModel('Likepost');
 
         if (isset($_COOKIE['id_user'])) {
             $model_user = $this->getModel("User");
