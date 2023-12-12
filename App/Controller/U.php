@@ -22,6 +22,24 @@ class u extends Controller
             exit;
         }
     }
+    function personal($options = null)
+    {
+        $model = $this->getModel('User');
+        if ($options == 'update') {
+            $model->update($_COOKIE['id_user'], $_POST['name'], empty($_POST['birth']) ? null : $_POST['birth'], empty($_POST['sex']) ? null : ($_POST['sex']));
+            header("Location: /u/personal/{$_COOKIE['id_user']}");
+        }
+        if (isset($_COOKIE['id_user'])) {
+            $inforUser = $model->getDataUser($_COOKIE['id_user']);
+
+            include ROOT . '/App/View/User/personal.php';
+            exit;
+        } else {
+            include ROOT . '/App/Errors/404.php';
+            exit;
+        }
+    }
+
     function posts($options)
     {
         if (isset($_COOKIE['id_user'])) {

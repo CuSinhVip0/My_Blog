@@ -1,5 +1,5 @@
---bản cập nhật 4.10
+--bản cập nhật 5.0
 
--   fix bug domain tinyMCE của trang createPost
+-   cập nhật thêm trang thông tin cá nhân
 
--   fix lỗi không xác thực password trang login
+*   fix lỗi không xác thực password trang login
