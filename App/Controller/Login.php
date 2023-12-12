@@ -35,13 +35,14 @@ class Login extends Controller
         // xử lý data
         //username invalid
         if (empty($acc)) {
-            !isset($_SESSION['returnError']) && $_SESSION['returnError'] = 'Tài khoản không đúng';
+            !isset($_SESSION['returnErrorUser']) && $_SESSION['returnErrorUser'] = 'Tài khoản không đúng';
             setView('/login');
         } else {
 
             //account invalid
             $x = password_verify($password, $acc[0]['password']);
-            if ($acc[0]['password'] == $x) {
+
+            if ($x) {
                 if ($username == 'root') {
                     setcookie('id_user', 'root', time() + (86400 * 30), "/");
                     setView("/admin/dashboard/public");
@@ -52,7 +53,7 @@ class Login extends Controller
 
                 setView("/");
             } else { //password invalid
-                !isset($_SESSION['returnError']) && $_SESSION['returnError'] = 'Mật khẩu sai kìa';
+                !isset($_SESSION['returnErrorPass']) && $_SESSION['returnErrorPass'] = 'Mật khẩu sai kìa';
                 setView('/login');
             }
         }

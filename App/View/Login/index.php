@@ -22,16 +22,25 @@
                     <input type="text" class="input login_username" name="username" placeholder="Tài khoản">
                     <p class="form-notification">
                         <!-- xử lý có lỗi thì return lỗi -->
-                        <? if (isset($_SESSION['returnError'])) {
-                            echo $_SESSION['returnError'];
+                        <? if (isset($_SESSION['returnErrorUser'])) {
+                            echo $_SESSION['returnErrorUser'];
                             //hiển thị xong thì xóa sesion
-                            unset($_SESSION['returnError']);
+                            unset($_SESSION['returnErrorUser']);
                         } else {
                             echo "";
                         } ?>
                     </p>
                     <input type="password" class="input login_password" name="password" placeholder="Mật khẩu">
-                    <p class="form-notification"></p>
+                    <p class="form-notification">
+                        <!-- xử lý có lỗi thì return lỗi -->
+                        <? if (isset($_SESSION['returnErrorPass'])) {
+                            echo $_SESSION['returnErrorPass'];
+                            //hiển thị xong thì xóa sesion
+                            unset($_SESSION['returnErrorPass']);
+                        } else {
+                            echo "";
+                        } ?>
+                    </p>
                     <input type="submit" class="input login_submit" value="Đăng nhập">
                 </form>
                 <div class="sub">
