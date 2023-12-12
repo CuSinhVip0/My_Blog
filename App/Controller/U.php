@@ -53,6 +53,15 @@ class u extends Controller
                         exit;
                         break;
                     }
+                case "uncensored": {
+                        $model = $this->getModel('User');
+                        $model_posts = $this->getModel('Posts');
+                        $inforUser = $model->getDataUser($_COOKIE['id_user']);
+                        $posts = $model_posts->getAllPostUncensoredForUser($_COOKIE['id_user']);
+                        include ROOT . '/App/View/User/uncensored.php';
+                        exit;
+                        break;
+                    }
                 default: {
                         include ROOT . '/App/Errors/404.php';
                         exit;

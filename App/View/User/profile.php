@@ -40,11 +40,12 @@
                 <ul class="content_items">
                     <? foreach ($posts as $post) { ?>
                         <li class="item">
-                            <a href="/post/detail/<? echo $post['id'] ?>" class="item_title"><? echo $post['title'] ?><span class="item_status"><?
-                                                                                                                                                if ($post['trangthai'] == 0) echo  "Chờ xét duyệt";
-                                                                                                                                                else if ($post['trangthai'] == 1) echo "Công khai";
-                                                                                                                                                else if ($post['trangthai'] == 2) echo "Không được duyệt";
-                                                                                                                                                ?></span></a>
+                            <a href="/post/detail/<? echo $post['id'] ?><? if ($post['trangthai'] == 0) echo "/pending";
+                                                                        else if ($post['trangthai'] == 2) echo "/uncensored"; ?>" class="item_title"><? echo $post['title'] ?><span class="item_status"><?
+                                                                                                                                                                                                        if ($post['trangthai'] == 0) echo  "Chờ xét duyệt";
+                                                                                                                                                                                                        else if ($post['trangthai'] == 1) echo "Công khai";
+                                                                                                                                                                                                        else if ($post['trangthai'] == 2) echo "Không được duyệt";
+                                                                                                                                                                                                        ?></span></a>
                             <div class="item_right_below">
                                 <div class="item_author"> <svg class='item_icon' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
@@ -84,7 +85,8 @@
                                 <? echo $post['content'] ?>
                             </div>
                             <div class="read">
-                                <a href="/post/detail/<? echo $post['id'] ?>" class="read_btn">Xem thêm</a>
+                                <a href="/post/detail/<? echo $post['id'] ?><? if ($post['trangthai'] == 0) echo "/pending";
+                                                                            else if ($post['trangthai'] == 2) echo "/uncensored"; ?>" class="read_btn">Xem thêm</a>
                             </div>
                         </li>
                     <? } ?>

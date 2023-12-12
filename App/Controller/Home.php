@@ -83,7 +83,6 @@ class Home extends Controller
     }
     public function dislikepost()
     {
-
         $id_post = $_GET['id_post'];
         $model_like = $this->getModel('Likepost');
         if (isset($_COOKIE['id_user'])) {

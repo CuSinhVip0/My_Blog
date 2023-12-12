@@ -35,7 +35,7 @@
                                 <?;
                                 $postlike = null;
                                 if (isset($_COOKIE['id_user'])) {
-                                    $postlike = $model_like->getPostwithLikeforUser($_COOKIE['id_user'], $post['id']);
+                                    $postlike = $model_like->getPostwithLikeforUser($_COOKIE['id_user'], $content[0]['id']);
                                 }
                                 if ($postlike) { ?>
                                     <div id='post_like_<? echo $content[0]['id'] ?>' class=" item_author" onclick="tym('<? echo $content[0]['id'] ?>')">

@@ -3,8 +3,10 @@
 class Post extends Controller
 {
 
-    public function detail($id)
+    public function detail($id, $status = 1)
     {
+
+
         $model = $this->getModel('Posts');
         $model_like = $this->getModel('Likepost');
 
@@ -13,7 +15,19 @@ class Post extends Controller
             $inforUser = $model_user->getDataUser($_COOKIE['id_user']);
         }
 
-        $content = $model->getAllPostwithId($id);
+        if ($status == "pending") {
+            $status = 0;
+        } else if ($status == "uncensored") {
+            $status = 2;
+        }
+        $content = $model->getAllPostwithId($id, $status);
+        if ($status == 0 || $status == 2) {
+
+            if ($content[0]['id_user'] != $_COOKIE['id_user']) {
+                include ROOT . '/App/Errors/404.php';
+                exit;
+            }
+        }
         $posts_see = $model->getAllPostwithTopSee();
         $model->updateSeePost($id);
         if ($content == null) {

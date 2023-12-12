@@ -10,7 +10,7 @@ class Posts extends Db
 
     function getAllPostwithTopSee()
     {
-        return $this->selectQuery("select * from post join user on post.id_user = user.id_user order by luotxem desc LIMIT 3");
+        return $this->selectQuery("select * from post join user on post.id_user = user.id_user where trangthai = 1 order by luotxem desc LIMIT 3");
     }
     function getAllPostwithUser()
     {
@@ -25,9 +25,9 @@ class Posts extends Db
     {
         return $this->selectQuery("insert into post (id,title,content,id_user) values(?,?,?,?)", [$id, $title, $content, $id_ser]);
     }
-    function getAllPostwithId($id)
+    function getAllPostwithId($id, $status)
     {
-        return $this->selectQuery("select * from post join user on post.id_user = user.id_user where id = ?", [$id]);
+        return $this->selectQuery("select * from post join user on post.id_user = user.id_user where id = ? and trangthai = ?", [$id, $status]);
     }
     function getAllPostForUser($id)
     {
@@ -44,6 +44,10 @@ class Posts extends Db
     function  getAllPostDeleteForUser($id)
     {
         return $this->selectQuery("select * from post where id_user = ? and trangthai = -1", [$id]);
+    }
+    function  getAllPostUncensoredForUser($id)
+    {
+        return $this->selectQuery("select * from post where id_user = ? and trangthai = 2", [$id]);
     }
 
 
