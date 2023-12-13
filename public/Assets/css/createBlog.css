@@ -43,10 +43,12 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .container {
-    width: 1440px;
+    width: 1140px;
     height: calc(100vh - 110px);
     background-color: white;
     padding: 110px 20px 0px;
@@ -87,4 +89,47 @@ li {
     font-size: 16px;
     outline: none;
     background-color: white;
+}
+
+/* notification */
+
+.notification {
+    min-width: 320px;
+    position: absolute;
+    top: 120px;
+    left: 100%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 10;
+}
+
+.notification_content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    gap: 10px;
+}
+
+.notification_img {
+    width: 50px;
+    height: 50px;
+}
+
+@keyframes noti {
+    0% {
+        left: 100%;
+    }
+    25% {
+        left: calc(100% - 370px);
+    }
+    75% {
+        left: calc(100% - 370px);
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
 }

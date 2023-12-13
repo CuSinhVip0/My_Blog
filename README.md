@@ -1,19 +1,15 @@
---bản cập nhật 5.1
+--bản cập nhật 6.0
 
--   fix lại toàn bộ ảnh đại diện của toàn bộ trang web
+-   Thêm trang quản lý người dùng cho admin
 
--   fix lại hình mặc định khi không có ảnh đại diện
+*   fix bug like post trên controller search
 
--   css lại liên quan đến image
+-   fix bug like post của người vãng lai
 
--   thay logo
+-   fix bug like post ở các trang khác trang home ở trạng thái khôn đăng nhập mà ko chuyển đến trang login
 
--   fix tên đại diện mặc định sau khi tạo accout
+-   fix trang 404 khi vào trang profile của user khi không đăng nhập
 
--   fix lại điều hướng ở nút trang chủ
+-   fix css trang create blog
 
--   xóa các hình đã lưu trong server sau khi đã thay đổi
-
--   Thêm chức năng xóa hình đại diện
-
--   cấu hình lại các biến define
+*   Thêm thông báo đã đăng post thành công

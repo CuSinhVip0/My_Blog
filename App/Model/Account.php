@@ -15,4 +15,8 @@ class Account extends Db
         $stm = $this->connect->prepare("insert into $table(id_user,username,password) values(?,?,?)");
         $stm->execute([$id_user, $username, $password]);
     }
+    public function deleteAcc($id_user)
+    {
+        return $this->deleteQuery("delete from account where id_user= ?", [$id_user]);
+    }
 }

@@ -9,6 +9,8 @@ class Search extends Controller
     {
         $modeluser = $this->getModel('User');
         $model = $this->getModel('Posts');
+        $model_like = $this->getModel('Likepost');
+
         $q = trim($_GET['q']);
         if (isset($_COOKIE['id_user'])) {
             $inforUser = $modeluser->getDataUser($_COOKIE['id_user']);

@@ -54,8 +54,6 @@ class Home extends Controller
         if (isset($_COOKIE['id_user'])) {
             $inforUser = $model->getDataUser($_COOKIE['id_user']);
         }
-
-
         include ROOT . '/App/View/Home/createBlog.php';
         exit;
     }
@@ -66,6 +64,7 @@ class Home extends Controller
         $content = isset($_POST['content']) ? $_POST['content'] : '';
         $model = $this->getModel('Posts');
         $model->insertPost(uniqid(), $title, $content, $_COOKIE['id_user']);
+        !isset($_SESSION['statusPost']) && $_SESSION['statusPost'] = 'successfully';
         header("Location: /home/create-blog");
     }
     public function likepost()

@@ -49,12 +49,13 @@ class Posts extends Db
     {
         return $this->selectQuery("select * from post where id_user = ? and trangthai = 2", [$id]);
     }
-
-
-
     function deletePost($id)
     {
         return $this->selectQuery("delete from post where id = ?", [$id]);
+    }
+    function deleteAllPostforUser($id_user)
+    {
+        return $this->selectQuery("delete from post where id_user = ?", [$id_user]);
     }
 
     function updateStatusPost($status, $id)

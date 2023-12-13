@@ -30,6 +30,14 @@ class Admin extends Controller
                         $posts = $model->getAllPostPendingWithUser();
                         include ROOT . '/App/View/Admin/pending.php';
                         exit;
+                        break;
+                    }
+                case 'allUsers': {
+                        $model = $this->getModel('User');
+                        $users = $model->getAllDataUser();
+                        include ROOT . '/App/View/Admin/allUser.php';
+                        exit;
+                        break;
                     }
                 default: {
                         header("Location: /admin/dashboard/public");

@@ -21,4 +21,10 @@ class Db
 		$stm->execute($arr);
 		return $stm->rowCount();
 	}
+	function deleteQuery($sql, $arr = array())
+	{
+		$stm = $this->connect->prepare($sql);
+		$stm->execute($arr);
+		return $stm->rowCount();
+	}
 }

@@ -5,7 +5,29 @@ class u extends Controller
     function __construct()
     {
     }
-    function profile($id_user)
+
+    function delete($id_user)
+    {
+        $model_user = $this->getModel('User');
+        $model_post = $this->getModel('Posts');
+        $model_acc = $this->getModel('Account');
+        $model_post->deleteAllPostforUser($id_user);
+        //fix truong hop accout co hinh dai dien, xoa hinh
+        $inforUser = $model_user->getDataUser($id_user);
+        if (!empty($inforUser[0]['hinh'])) {
+            if (file_exists('public/Image/' . $inforUser[0]['hinh'])) {
+                //xoa hinh cu
+                unlink('public/Image/' . $inforUser[0]['hinh']);
+            }
+        }
+
+        $model_user->deleteUser($id_user);
+        $model_acc->deleteAcc($id_user);
+
+        header("Location: /admin/dashboard/allUsers");
+    }
+
+    function profile($id_user = null)
     {
         if (isset($_COOKIE['id_user'])) {
             $model = $this->getModel('User');

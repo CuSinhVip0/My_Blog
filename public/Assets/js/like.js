@@ -12,19 +12,21 @@ async function tym(v) {
             item.children["unlike"].classList.add("show")
         }
     })
+    console.log(flag)
 
     if (flag) {
-        await fetch(window.location.href + `/home/likepost?id_post=${v}`, {
+        console.log(flag)
+        await fetch(window.location.origin + `/home/likepost?id_post=${v}`, {
             method: "GET",
         })
             .then((res) => res.json())
             .then((res) => {
                 if (res.messege == "error") {
-                    window.location.replace(window.location.href + "login")
+                    window.location.replace(window.location.origin + "/login")
                 }
             })
     } else {
-        await fetch(window.location.href + `home/dislikepost?id_post=${v}`, {
+        await fetch(window.location.origin + `/home/dislikepost?id_post=${v}`, {
             method: "GET",
         })
     }
