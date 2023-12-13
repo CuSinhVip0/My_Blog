@@ -20,7 +20,7 @@
         <div class="container">
             <div class="container_author">
                 <div class="author">
-                    <img class="author_img" src="<? echo __WEB_ROOT__ . "public/Image/user.png" ?>" alt="user">
+                    <img class="author_img" src="<? echo (($inforUser2[0]['hinh']) != null) ? __WEB_ROOT__ . "/public/Image/" . $inforUser2[0]['hinh'] : __WEB_ROOT__ . "/public/SVG/user.svg" ?>" alt="user">
                     <div class="author_name">
                         <p class="author_name_title"><? echo $inforUser2[0]['name'] ?></p>
                         <p class="author_name_id">#<? echo $inforUser2[0]['id_user'] ?></p>

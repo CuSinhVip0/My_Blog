@@ -75,6 +75,13 @@ p {
     align-items: center;
     font-size: 18px;
     padding: 20px;
+    text-decoration: none;
+    color: #1b1b1b;
+}
+
+.left_title:hover {
+    background: #02daff;
+    color: #ecf5ff;
 }
 
 .left_icon {
@@ -130,12 +137,35 @@ p {
     align-items: center;
     padding: 40px 0;
 }
+.body_image_container {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    cursor: pointer;
+}
 
 .img {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.body_image_btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: buttonface;
+    text-align: center;
+}
+
+.btn_2 {
+    bottom: -30px;
+    text-decoration: none;
+    color: #1b1b1b;
 }
 
 .body_infor {
@@ -204,7 +234,8 @@ p {
     border-color: #b3d8ff;
 }
 
-.btn-color2 :hover {
+.btn-color2 :hover,
+.body_image_btn:hover {
     background: #409eff;
     color: #ecf5ff;
 }

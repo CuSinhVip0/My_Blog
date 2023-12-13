@@ -46,7 +46,7 @@
                     <? foreach ($posts as $post) { ?>
                         <li class="item">
                             <div class="item_left">
-                                <img class="item_left_image" src="<? echo __WEB_ROOT__ . "public/SVG/user.svg" ?>" alt=" user">
+                                <img class="item_left_image" src="<? echo (($post['hinh']) != null) ? __WEB_ROOT__ . "/public/Image/" . $post['hinh'] : __WEB_ROOT__ . "/public/SVG/user.svg" ?>" alt=" user">
                             </div>
                             <div class="item_right">
                                 <a href="/post/detail/<? echo $post['id'] ?>" class="item_title"><? echo $post['title'] ?> <span class="item_time"><? echo date('M d, Y', strtotime($post['createAt'])) ?></span></a>

@@ -18,7 +18,7 @@ class Register extends Controller
         $model = $this->getModel('Account');
         $account = $model->getAcc($username);
         if (!empty($account)) {
-            !isset($_SESSION['returnError']) && $_SESSION['returnError'] =  "Tài khoản đã tồn tại rồi thằng lon";
+            !isset($_SESSION['returnError']) && $_SESSION['returnError'] =  "Tài khoản đã tồn tại";
             setView('/register');
         } else {
             $password = password_hash($password, PASSWORD_DEFAULT);
@@ -28,7 +28,7 @@ class Register extends Controller
 
             //tạo profile trống;
             $profile = $this->getModel('User');
-            $profile->insert($id_user, null, null, null);
+            $profile->insert($id_user, 'id_' . $id_user);
 
             setView('/login');
         }

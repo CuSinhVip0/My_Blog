@@ -26,6 +26,7 @@ class Login extends Controller
     }
     function dologin()
     {
+        ob_start();
         $username = isset($_POST['username']) ? $_POST['username'] : '';
         $password = isset($_POST['password']) ? $_POST['password'] : '';
         //lấy data từ model

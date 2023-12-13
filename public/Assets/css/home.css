@@ -90,8 +90,9 @@ li {
 }
 
 .item_left_image {
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
     border-radius: 50%;
 }
 .item_right_below {

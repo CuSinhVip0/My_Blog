@@ -5,7 +5,7 @@ class Db
 	public $connect = null;
 	public function __construct()
 	{
-		$this->connect = new PDO("mysql:host=localhost;dbname=doanthweb", "root", "");
+		$this->connect = new PDO("mysql:host=" . HOST . ";dbname=" . DBNAME, DBUSER, DBPASS);
 		$this->connect->query('set names utf8');
 	}
 

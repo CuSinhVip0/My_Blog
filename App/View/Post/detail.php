@@ -22,7 +22,7 @@
                     <div class="left_author_info">
                         <div class="left_author">
                             <div class="left_author_img">
-                                <img class="left_author_img_i" src="<? echo __WEB_ROOT__ . "public/Image/user.png" ?>" alt="user">
+                                <img class="left_author_img_i" src="<? echo (($content[0]['hinh']) != null) ? __WEB_ROOT__ . "/public/Image/" . $content[0]['hinh'] : __WEB_ROOT__ . "/public/SVG/user.svg" ?>" alt="user">
                             </div>
                             <div class="left_author_about">
                                 <a href="/author/profile/<? echo $content[0]['id_user'] ?>" class="left_author_name"><? echo $content[0]['name'] ?></a>

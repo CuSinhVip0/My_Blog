@@ -14,17 +14,17 @@ async function tym(v) {
     })
 
     if (flag) {
-        await fetch(`http://myblog.vn/home/likepost?id_post=${v}`, {
+        await fetch(window.location.href + `/home/likepost?id_post=${v}`, {
             method: "GET",
         })
             .then((res) => res.json())
             .then((res) => {
                 if (res.messege == "error") {
-                    window.location.replace("http://myblog.vn/login")
+                    window.location.replace(window.location.href + "login")
                 }
             })
     } else {
-        await fetch(`http://myblog.vn/home/dislikepost?id_post=${v}`, {
+        await fetch(window.location.href + `home/dislikepost?id_post=${v}`, {
             method: "GET",
         })
     }
